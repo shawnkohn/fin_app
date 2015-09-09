@@ -1,6 +1,10 @@
 class FixedMonthlyExpensesController < ApplicationController
 	def new
 	end
+
+	def index
+		@fixed_monthly_expenses = FixedMonthlyExpense.all
+	end
 	
 	def create
 		@fixed_monthly_expense = FixedMonthlyExpense.new(fixed_monthly_expense_params)
