@@ -1,0 +1,15 @@
+<%= form_for :fixed_monthly_expense, url: fixed_monthly_expenses_path do |f| %>
+  <p>
+    <%= f.label :expense %><br>
+    <%= f.text_field :expense %>
+  </p>
+ 
+  <p>
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
