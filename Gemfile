@@ -36,6 +36,7 @@ gem 'puma'
 gem 'money'
 gem 'money-rails'
 gem 'autonumeric-rails'
+gem 'minitest-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

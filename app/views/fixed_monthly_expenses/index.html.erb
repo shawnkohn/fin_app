@@ -1,20 +1,26 @@
 <h1>Listing expenses</h1>
 <%= link_to 'New Fixed Monthly Expense', new_fixed_monthly_expense_path %>
-<table>
+<table id=expenses>
   <tr>
     <th>Expense</th>
     <th>Amount</th>
+    <th colspan="3"></th>
   </tr>
 
-  <% @fixed_monthly_expenses.each do |fixed_monthly_expense| %>
+  <%    i=0 
+	@fixed_monthly_expenses.each do |fixed_monthly_expense| 
+  %>
     <tr>
       <td><%= fixed_monthly_expense.expense %></td>
-      <td><%= humanized_money_with_symbol fixed_monthly_expense.amount %></td>
+      <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money fixed_monthly_expense.amount %></div></td>
       <td><%= link_to 'Show', fixed_monthly_expense_path(fixed_monthly_expense) %></td>
       <td><%= link_to 'Edit', edit_fixed_monthly_expense_path(fixed_monthly_expense) %></td>
       <td><%= link_to 'Destroy', fixed_monthly_expense_path(fixed_monthly_expense),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
-  <% end %>
+  <% 	i+=1 
+	print i 
+	end 
+  %>
 </table>

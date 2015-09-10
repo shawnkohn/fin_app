@@ -6,7 +6,9 @@ MoneyRails.configure do |config|
   #
    config.default_currency = :usd
 
-  # Set default bank object
+   config.no_cents_if_whole = false
+  
+# Set default bank object
   #
   # Example:
   # config.default_bank = EuCentralBank.new
@@ -62,9 +64,9 @@ MoneyRails.configure do |config|
   # Default value is nil meaning "ignore this option".
   # Example:
   #
-  # config.default_format = {
-  #   :no_cents_if_whole => nil,
-  #   :symbol => nil,
-  #   :sign_before_symbol => nil
-  # }
+    config.default_format = {
+     :no_cents_if_whole => false,
+     :symbol => '$',
+     :sign_before_symbol => false 
+   }
 end
