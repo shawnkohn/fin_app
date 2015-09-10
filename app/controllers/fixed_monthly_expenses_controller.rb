@@ -1,5 +1,21 @@
 class FixedMonthlyExpensesController < ApplicationController
 	def new
+		@fixed_monthly_expense = FixedMonthlyExpense.new
+	end
+
+
+	def update
+  		@fixed_monthly_expense = FixedMonthlyExpense.find(params[:id])
+ 
+		  if @fixed_monthly_expense.update(fixed_monthly_expense_params)
+    			redirect_to @fixed_monthly_expense
+  		  else
+    			render 'edit'
+  		  end
+	end
+
+	def edit
+		@fixed_monthly_expense = FixedMonthlyExpense.find(params[:id])
 	end
 
 	def index
@@ -8,8 +24,11 @@ class FixedMonthlyExpensesController < ApplicationController
 	
 	def create
 		@fixed_monthly_expense = FixedMonthlyExpense.new(fixed_monthly_expense_params)
-		@fixed_monthly_expense.save
-		redirect_to @fixed_monthly_expense
+		if @fixed_monthly_expense.save
+			redirect_to @fixed_monthly_expense
+		else
+			render 'new'
+		end
 	end
 
 	def show

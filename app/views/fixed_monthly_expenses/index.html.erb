@@ -1,5 +1,5 @@
 <h1>Listing expenses</h1>
-
+<%= link_to 'New Fixed Monthly Expense', new_fixed_monthly_expense_path %>
 <table>
   <tr>
     <th>Expense</th>
@@ -10,6 +10,8 @@
     <tr>
       <td><%= fixed_monthly_expense.expense %></td>
       <td><%= humanized_money_with_symbol fixed_monthly_expense.amount %></td>
+      <td><%= link_to 'Show', fixed_monthly_expense_path(fixed_monthly_expense) %></td>
+      <td><%= link_to 'Edit', edit_fixed_monthly_expense_path(fixed_monthly_expense) %></td>
     </tr>
   <% end %>
 </table>
