@@ -1,3 +1,3 @@
 class FixedMonthlyExpenses< ActiveRecord::Base
-	monetize :amount
+	monetize :amount_cents
 end

@@ -9,7 +9,7 @@
   <% @fixed_monthly_expenses.each do |fixed_monthly_expense| %>
     <tr>
       <td><%= fixed_monthly_expense.expense %></td>
-      <td><%= fixed_monthly_expense.amount %></td>
+      <td><%= humanized_money_with_symbol fixed_monthly_expense.amount %></td>
     </tr>
   <% end %>
 </table>

@@ -8,7 +8,6 @@ class FixedMonthlyExpensesController < ApplicationController
 	
 	def create
 		@fixed_monthly_expense = FixedMonthlyExpense.new(fixed_monthly_expense_params)
-		@fixed_monthly_expense.amount *= 100		
 		@fixed_monthly_expense.save
 		redirect_to @fixed_monthly_expense
 	end
