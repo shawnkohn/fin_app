@@ -12,6 +12,9 @@
       <td><%= humanized_money_with_symbol fixed_monthly_expense.amount %></td>
       <td><%= link_to 'Show', fixed_monthly_expense_path(fixed_monthly_expense) %></td>
       <td><%= link_to 'Edit', edit_fixed_monthly_expense_path(fixed_monthly_expense) %></td>
+      <td><%= link_to 'Destroy', fixed_monthly_expense_path(fixed_monthly_expense),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>

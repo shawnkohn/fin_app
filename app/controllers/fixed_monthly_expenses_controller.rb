@@ -3,7 +3,13 @@ class FixedMonthlyExpensesController < ApplicationController
 		@fixed_monthly_expense = FixedMonthlyExpense.new
 	end
 
-
+	def destroy
+  		@fixed_monthly_expense = FixedMonthlyExpense.find(params[:id])
+  		@fixed_monthly_expense.destroy
+ 
+		  redirect_to fixed_monthly_expenses_path
+	end
+	
 	def update
   		@fixed_monthly_expense = FixedMonthlyExpense.find(params[:id])
  
