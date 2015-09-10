@@ -35,7 +35,7 @@ gem 'puma'
 
 gem 'money'
 gem 'money-rails'
-gem 'autonumeric-rails', :github=>'randoum/autonumeric-rails'
+gem 'autonumeric-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
