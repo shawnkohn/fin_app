@@ -9,8 +9,12 @@
 
   <%    i=0 
 	@fixed_monthly_expenses.each do |fixed_monthly_expense| 
+
+    if i%2==0
+      print "<tr>"
+    else
+      print "<tr class=alt>"
   %>
-    <tr>
       <td><%= fixed_monthly_expense.expense %></td>
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money fixed_monthly_expense.amount %></div></td>
       <td><%= link_to 'Show', fixed_monthly_expense_path(fixed_monthly_expense) %></td>
