@@ -1,0 +1,31 @@
+<%= form_for @step_one do |f| %>
+ 
+  <% if @step_one.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@step_one.errors.count, "error") %> prohibited
+        this step_one from being saved:
+      </h2>
+      <ul>
+        <% @step_one.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= f.label :goal_balance %><br>
+    <%= f.text_field :goal_balance, data: {autonumeric: true} %>
+  </p>
+ 
+  <p>
+    <%= f.label :current_balance %><br>
+    <%= f.text_field :current_balance, data: {autonumeric: true} %> 
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>

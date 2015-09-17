@@ -1,2 +1,7 @@
 <h1>Budgeting and Finance Application</h1>
-<%= link_to 'Fixed Monthly Expenses', controller: 'fixed_monthly_expenses' %>
+
+<h3><%= link_to 'Fixed Monthly Expenses', controller: 'fixed_monthly_expenses' %></h3>
+<br>
+<div><h3>Step 1: Initial Emergency Fund<h6><%= link_to 'Edit', edit_step_one_path(@step_one) %></h6></div>
+<h4>Your Goal: $ <%= humanized_money @step_one.goal_balance %> </h4>
+<h5>Current Balance: $ <%= humanized_money @step_one.current_balance %></h5>

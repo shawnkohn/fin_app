@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :fixed_monthly_expenses
-  
+  resources :step_ones  
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

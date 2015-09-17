@@ -14,7 +14,7 @@ class FixedMonthlyExpensesController < ApplicationController
   		@fixed_monthly_expense = FixedMonthlyExpense.find(params[:id])
  
 		  if @fixed_monthly_expense.update(fixed_monthly_expense_params)
-    			redirect_to @fixed_monthly_expense
+    			redirect_to welcome_index
   		  else
     			render 'edit'
   		  end
@@ -44,5 +44,5 @@ class FixedMonthlyExpensesController < ApplicationController
 	private
 		def fixed_monthly_expense_params
 			params.require(:fixed_monthly_expense).permit(:expense, :amount)
-	end
+    end
 end
