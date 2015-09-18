@@ -1,0 +1,34 @@
+<h1>Paycheck Deductions</h1>
+<%= link_to 'New Paycheck Deduction', new_paycheck_deduction_path %>
+<table id=expenses>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Tax Deductible</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <%
+    i=0
+    table_row_style = ""
+    @paycheck_deductions.each do |paycheck_deduction| 
+      i += 1
+      if i%2 == 0
+              table_row_style = "class=alt"
+      else
+              table_row_style = ""
+      end 
+  %>
+    <tr <%=table_row_style%> >
+      <td><%= paycheck_deduction.name %></td>
+      <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money paycheck_deduction.amount %></div></td>
+      <td><%= paycheck_deduction.is_tax_deductible ? "yes" : "no" %> </td>
+      <td><%= link_to 'Show', paycheck_deduction_path(paycheck_deduction) %></td>
+      <td><%= link_to 'Edit', edit_paycheck_deduction_path(paycheck_deduction) %></td>
+      <td><%= link_to 'Destroy', paycheck_deduction_path(paycheck_deduction),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+</table>
+

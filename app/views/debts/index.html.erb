@@ -1,0 +1,36 @@
+<h1>Debts</h1>
+<%= link_to 'New Debt', new_debt_path %>
+<table id=expenses>
+  <tr>
+    <th>Name</th>
+    <th>Balance</th>
+    <th>Minimum Monthly Payment</th>
+    <th>Interest Rate <th>
+    <th colspan="3"></th>
+  </tr>
+
+  <%
+    i=0
+    table_row_style = ""
+    @debts.each do |debt| 
+      i += 1
+      if i%2 == 0
+              table_row_style = "class=alt"
+      else
+              table_row_style = ""
+      end 
+  %>
+    <tr <%=table_row_style%> >
+      <td><%= debt.name %></td>
+      <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money debt.balance %></div></td>
+      <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money debt.minimum_monthly_payment %></div></td>
+      <td><div id=currency_symbol>%</div><div id=currency_amount><%= humanized_money debt.interest_rate %></div></td>
+      <td><%= link_to 'Show', debt_path(debt) %></td>
+      <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
+      <td><%= link_to 'Delete', debt_path(debt),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+</table>
+

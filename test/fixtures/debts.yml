@@ -1,0 +1,14 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  balance: 9.99
+  minimum_monthly_payment: 9.99
+  interest_rate: 9.99
+
+two:
+  name: MyString
+  balance: 9.99
+  minimum_monthly_payment: 9.99
+  interest_rate: 9.99

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :fixed_monthly_expenses
   resources :step_ones  
+  resources :debts
+  resources :paycheck
+  resources :paycheck_deductions
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 

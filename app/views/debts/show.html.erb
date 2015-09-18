@@ -1,0 +1,11 @@
+<p>
+	<strong>Debt:</strong>
+	<%= @debt.name %>
+</p>
+
+<p>
+	<strong>Balance:</strong>
+        <%= humanized_money_with_symbol @debt.balance %>
+</p>
+
+<%= link_to 'Back', debts_path %>
