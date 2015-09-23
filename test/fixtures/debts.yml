@@ -2,13 +2,13 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  balance: 9.99
-  minimum_monthly_payment: 9.99
-  interest_rate: 9.99
+  name: Test Debt One
+  balance: 1200
+  minimum_monthly_payment: 12
+  interest_rate: .22
 
 two:
-  name: MyString
-  balance: 9.99
-  minimum_monthly_payment: 9.99
-  interest_rate: 9.99
+  name: Test Debt Two
+  balance: 50
+  minimum_monthly_payment: 10
+  interest_rate: 1.35

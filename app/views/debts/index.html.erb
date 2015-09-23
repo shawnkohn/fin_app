@@ -6,7 +6,7 @@
     <th>Balance</th>
     <th>Minimum Monthly Payment</th>
     <th>Interest Rate <th>
-    <th colspan="3"></th>
+    <th colspan="2"></th>
   </tr>
 
   <%
@@ -25,7 +25,6 @@
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money debt.balance %></div></td>
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money debt.minimum_monthly_payment %></div></td>
       <td><div id=currency_symbol>%</div><div id=currency_amount><%= humanized_money debt.interest_rate %></div></td>
-      <td><%= link_to 'Show', debt_path(debt) %></td>
       <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
       <td><%= link_to 'Delete', debt_path(debt),
               method: :delete,
