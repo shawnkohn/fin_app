@@ -4,7 +4,7 @@
   <tr>
     <th>Expense</th>
     <th>Amount</th>
-    <th colspan="3"></th>
+    <th colspan="2"></th>
   </tr>
 
   <%
@@ -21,9 +21,8 @@
     <tr <%=table_row_style%> >
       <td><%= fixed_monthly_expense.expense %></td>
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money fixed_monthly_expense.amount %></div></td>
-      <td><%= link_to 'Show', fixed_monthly_expense_path(fixed_monthly_expense) %></td>
       <td><%= link_to 'Edit', edit_fixed_monthly_expense_path(fixed_monthly_expense) %></td>
-      <td><%= link_to 'Destroy', fixed_monthly_expense_path(fixed_monthly_expense),
+          <td><%= link_to 'Destroy', fixed_monthly_expense_path(fixed_monthly_expense),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
