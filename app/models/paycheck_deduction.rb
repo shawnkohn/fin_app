@@ -1,6 +1,8 @@
 class PaycheckDeduction < ActiveRecord::Base
-          validates :name, presence: true
-          validates :amount, presence: true
+  belongs_to :paycheck
+ 
+  validates :name, presence: true
+  validates :amount, presence: true
 
-          monetize :amount
+  monetize :amount
 end

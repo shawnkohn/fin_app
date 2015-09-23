@@ -1,0 +1,11 @@
+<p>
+	<strong>Paycheck Name:</strong>
+	<%= @paycheck.name %>
+</p>
+
+<p>
+	<strong>Payceheck Amount:</strong>
+        <%= humanized_money_with_symbol @paycheck.amount %>
+</p>
+
+<%= link_to 'Back', paychecks_path %>

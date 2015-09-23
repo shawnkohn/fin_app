@@ -1,13 +1,18 @@
 class WelcomeController < ApplicationController
   def index
-          @step_one = StepOne.find(1)
-          if (@step_one == nil)
-                  @step_one = StepOne.new
+          if (StepOne.exists?(1))
+              @step_one = StepOne.find(1)
+          else
+              @step_one = StepOne.new
           end
 
-          @paycheck = Paycheck.find(1)
-          if (@paycheck == nil)
-                  @paycheck = Paycheck.new
+          if (Paycheck.exists?(1))
+                  @paycheck = Paycheck.find(1)
           end
+                  #else
+          #        @paycheck = Paycheck.new
+          #end
+         
+ # end
   end
 end

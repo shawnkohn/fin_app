@@ -5,8 +5,10 @@ one:
   name: MyString
   amount: 9.99
   is_tax_deductible: false
+  paycheck: 
 
 two:
   name: MyString
   amount: 9.99
   is_tax_deductible: false
+  paycheck: 
