@@ -6,8 +6,11 @@ class StepOnesController < ApplicationController
 
         def create
                 @step_one = StepOne.new(step_one_params)
-                @step_one.save
-                redirect_to @step_one
+                if @step_one.save
+                        redirect_to @step_one
+                else
+                        render 'edit'
+                end
         end
 
   def update
