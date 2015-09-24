@@ -2,9 +2,9 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  amount: 9.99
+  name: First Paycheck 
+  amount: 1200
 
 two:
-  name: MyString
-  amount: 9.99
+  name: Second Paycheck
+  amount: 356.45

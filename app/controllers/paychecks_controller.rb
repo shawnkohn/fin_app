@@ -1,46 +1,51 @@
 class PaychecksController < ApplicationController
 
-        def new
-                @paycheck = Paycheck.new
+    def new    
+        @paycheck = Paycheck.new
+    end
+
+     
+    def create
+        @paycheck = Paycheck.new(paycheck_params)
+        if @paycheck.save
+            redirect_to paychecks_path
+        else
+            renter 'new'
         end
+    end
 
-        def create
-                @paycheck = Paycheck.new(paycheck_params)
-                @paycheck.save
-                redirect_to @paycheck
+    
+    def edit
+        @paycheck = Paycheck.find(params[:id])
+    end  
+
+    
+    def update  
+        @paycheck = Paycheck.find(params[:id])
+        if @paycheck.update(paycheck_params)      
+            redirect_to paychecks_path
+        else
+            render 'edit'
         end
-
-
-  def destroy
-      @paycheck = Paycheck.find(params[:id])
-      @paycheck.destroy
+    end
+    
+    
+    def destroy    
+        @paycheck = Paycheck.find(params[:id])
+        @paycheck.destroy
  
-      redirect_to paychecks_path
-  end      
+        redirect_to paychecks_path
+    end      
       
-  def update
-          @paycheck = Paycheck.find(params[:id])
-          if @paycheck.update(paycheck_params)
-                  redirect_to welcome_index
-          else
-                  render 'edit'
-          end
-  end
+ 
+    def index
+        @paychecks = Paycheck.all
+    end
+ 
+    private
 
-  def show
-    @paycheck = Paycheck.find(params[:id])
-  end    
+    def paycheck_params
+        params.require(:paycheck).permit(:name, :amount)
+    end
 
-  def edit
-          @paycheck = Paycheck.find(params[:id])
-  end  
-  
-  def index
-          @paychecks = Paycheck.all
-  end
-  private
-  
-  def paycheck_params
-          params.require(:paycheck).permit(:name, :amount)
-  end
 end
