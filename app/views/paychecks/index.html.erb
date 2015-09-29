@@ -3,14 +3,16 @@
 <table id=expenses>
   <tr>
     <th>Name</th>
-    <th>Amount</th>
+    <th>Gross</th>
+    <th>Net</th>
     <th colspan="3"></th>
   </tr>
 
   <%
     i=0
     table_row_style = ""
-    @paychecks.each do |paycheck| 
+    @paychecks.each do |paycheck|
+       paycheck_calculator = PaycheckCalculator.new (paycheck) 
       i += 1
       if i%2 == 0
               table_row_style = "class=alt"
@@ -21,6 +23,7 @@
     <tr <%=table_row_style%> >
       <td><%= paycheck.name %></td>
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money paycheck.amount %></div></td>
+      <td><div id=currency_symbol>$</div><div id=currency_amount><%= paycheck_calculator.net_pay %></div></td>
       <td><%= link_to 'Add Deductions', paycheck_path(paycheck) %></td>
       <td><%= link_to 'Edit', edit_paycheck_path(paycheck) %></td>
       <td><%= link_to 'Delete', paycheck_path(paycheck),

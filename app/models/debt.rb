@@ -6,5 +6,4 @@ class Debt < ActiveRecord::Base
   
   monetize :balance
   monetize :minimum_monthly_payment
-  monetize :interest_rate
 end

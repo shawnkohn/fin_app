@@ -5,4 +5,5 @@ class PaycheckDeduction < ActiveRecord::Base
   validates :amount, presence: true
 
   monetize :amount
+
 end

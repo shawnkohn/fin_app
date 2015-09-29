@@ -18,43 +18,43 @@ ActiveRecord::Schema.define(version: 20150918023839) do
 
   create_table "debts", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "balance"
-    t.decimal  "minimum_monthly_payment"
+    t.money    "balance",                 scale: 2
+    t.money    "minimum_monthly_payment", scale: 2
     t.decimal  "interest_rate"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "fixed_monthly_expenses", force: :cascade do |t|
     t.string   "expense"
-    t.decimal  "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.money    "amount",     scale: 2
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "paycheck_deductions", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "amount"
+    t.decimal  "amount",            precision: 12, scale: 2
     t.boolean  "is_tax_deductible"
     t.integer  "paycheck_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   add_index "paycheck_deductions", ["paycheck_id"], name: "index_paycheck_deductions_on_paycheck_id", using: :btree
 
   create_table "paychecks", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "amount",     precision: 12, scale: 2
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "step_ones", force: :cascade do |t|
-    t.decimal  "goal_balance"
-    t.decimal  "current_balance"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.money    "goal_balance",    scale: 2
+    t.money    "current_balance", scale: 2
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_foreign_key "paycheck_deductions", "paychecks"
