@@ -48,7 +48,7 @@ class FixedMonthlyExpensesController < ApplicationController
     
     private
     def fixed_monthly_expense_params
-        params.require(:fixed_monthly_expense).permit(:expense, :amount)
+        params.require(:fixed_monthly_expense).permit(:name, :amount)
     end
 
 end

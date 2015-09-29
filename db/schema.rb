@@ -18,18 +18,18 @@ ActiveRecord::Schema.define(version: 20150918023839) do
 
   create_table "debts", force: :cascade do |t|
     t.string   "name"
-    t.money    "balance",                 scale: 2
-    t.money    "minimum_monthly_payment", scale: 2
-    t.decimal  "interest_rate"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.decimal  "balance",                 precision: 12, scale: 2
+    t.decimal  "minimum_monthly_payment", precision: 12, scale: 2
+    t.decimal  "interest_rate",           precision: 7,  scale: 4
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   create_table "fixed_monthly_expenses", force: :cascade do |t|
-    t.string   "expense"
-    t.money    "amount",     scale: 2
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "name"
+    t.decimal  "amount",     precision: 12, scale: 2
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "paycheck_deductions", force: :cascade do |t|
@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 20150918023839) do
   end
 
   create_table "step_ones", force: :cascade do |t|
-    t.money    "goal_balance",    scale: 2
-    t.money    "current_balance", scale: 2
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.decimal  "goal_balance",    precision: 12, scale: 2
+    t.decimal  "current_balance", precision: 12, scale: 2
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_foreign_key "paycheck_deductions", "paychecks"

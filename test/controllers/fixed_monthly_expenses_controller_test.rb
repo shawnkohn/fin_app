@@ -20,7 +20,7 @@ class FixedMonthlyExpensesControllerTest < ActionController::TestCase
 
     test "should create fixed_monthly_expense" do
         assert_difference('FixedMonthlyExpense.count') do
-            post :create, fixed_monthly_expense: {expense: @fixed_monthly_expense.expense, amount: @fixed_monthly_expense.amount}
+            post :create, fixed_monthly_expense: {name: @fixed_monthly_expense.name, amount: @fixed_monthly_expense.amount}
         end
 
         assert_redirected_to fixed_monthly_expenses_path(assigns(:fixed_monthly_expenses))
@@ -32,8 +32,8 @@ class FixedMonthlyExpensesControllerTest < ActionController::TestCase
     end
 
     test "should update fixed_monthly_expense" do
-        @fixed_monthly_expense.expense = "Updated Expense Name"
-        patch :update, id: @fixed_monthly_expense, fixed_monthly_expense: {expense: @fixed_monthly_expense.expense, amount: @fixed_monthly_expense.amount}
+        @fixed_monthly_expense.name = "Updated Expense Name"
+        patch :update, id: @fixed_monthly_expense, fixed_monthly_expense: {name: @fixed_monthly_expense.name, amount: @fixed_monthly_expense.amount}
         assert_redirected_to fixed_monthly_expenses_path(assigns(:fixed_monthly_expenses))
     end
 
