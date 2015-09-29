@@ -41,7 +41,13 @@ class PaychecksController < ApplicationController
     def index
         @paychecks = Paycheck.all
     end
- 
+
+    
+    def show
+        @paycheck = Paycheck.find(params[:id])
+    end
+
+
     private
 
     def paycheck_params

@@ -1,35 +1,33 @@
-<%= form_for @paycheck_deduction do |f| %>
+<%= form_for ([@paycheck, @paycheck.paycheck_deductions.build]) do |f| %>
  
-  <% if @paycheck_deduction.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@paycheck_deduction.errors.count, "error") %> prohibited
-        this paycheck_deduction from being saved:
-      </h2>
-      <ul>
-        <% @paycheck_deduction.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount, data: {autonumeric: true} %> 
-  </p>
-  <p>
-    <%= f.label :is_tax_deductible %><br>
-    <%= f.check_box :is_tax_deductible %> 
-  </p>
+    <div id=deduction_table>
+        <div id=deduction_heading>
+            <div id=deduction_cell>
+                <%= f.label :name %>
+            </div>
+            <div id=deduction_cell>
+                <%= f.label :amount %>
+            </div>
+            <div id=deduction_cell>
+                <%= f.label :is_tax_deductible, "Pre Tax?" %>
+            </div>
+            <div id=deduction_cell></div>
 
-  <p>
-    <%= f.submit %>
-  </p>
+        </div>
+        <div id=deduction_row>
+            <div id=deduction_cell>
+                <%= f.text_field :name %>
+            </div>
+            <div id=deduction_cell>
+                <%= f.text_field :amount, data: {autonumeric: true} %> 
+            </div>
+            <div id=deduction_cell>
+                <%= f.check_box :is_tax_deductible %> 
+            </div>
+            <div id=deduction_cell>
+                <%= f.submit %>
+            </div>
+        </div>
+    </div>
  
 <% end %>

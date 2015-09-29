@@ -1,11 +1,23 @@
-<p>
-	<strong>Paycheck Name:</strong>
-	<%= @paycheck.name %>
-</p>
+<div id=paycheck_header><%= @paycheck.name %>: Gross Pay 
+<%= humanized_money_with_symbol @paycheck.amount %>
+</div>
 
-<p>
-	<strong>Payceheck Amount:</strong>
-        <%= humanized_money_with_symbol @paycheck.amount %>
-</p>
+<div id=deduction_table>
+    <div id=deduction_heading>
+        <div id=deduction_cell>
+            Deduction Name
+        </div>
+        <div id=deduction_cell>
+            Amount
+        </div>
+        <div id=deduction_cell>
+            Pre Tax?
+        </div>
+        <div id=deduction_cell></div>
+    </div>
+    <%= render @paycheck.paycheck_deductions %>
+</div>
+<br>
+<%= render 'paycheck_deductions/form' %>
 
 <%= link_to 'Back', paychecks_path %>
