@@ -1,5 +1,5 @@
 <h1>Paychecks</h1>
-<%= link_to 'New Paycheck', new_paycheck_path %>
+<%= link_to 'New Paycheck', new_budget_paycheck_path(@budget) %>
 <table id=expenses>
   <tr>
     <th>Name</th>
@@ -11,7 +11,7 @@
   <%
     i=0
     table_row_style = ""
-    @paychecks.each do |paycheck|
+    @budget.paychecks.each do |paycheck|
        paycheck_calculator = PaycheckCalculator.new (paycheck) 
       i += 1
       if i%2 == 0
@@ -24,9 +24,9 @@
       <td><%= paycheck.name %></td>
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money paycheck.amount %></div></td>
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= paycheck_calculator.net_pay %></div></td>
-      <td><%= link_to 'Add Deductions', paycheck_path(paycheck) %></td>
-      <td><%= link_to 'Edit', edit_paycheck_path(paycheck) %></td>
-      <td><%= link_to 'Delete', paycheck_path(paycheck),
+      <td><%= link_to 'Add Deductions', budget_paycheck_path(@budget, paycheck) %></td>
+      <td><%= link_to 'Edit', edit_budget_paycheck_path(@budget, paycheck) %></td>
+      <td><%= link_to 'Delete', budget_paycheck_path(@budget, paycheck),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>

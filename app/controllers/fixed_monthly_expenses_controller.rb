@@ -1,15 +1,15 @@
 class FixedMonthlyExpensesController < ApplicationController
-
         
     def new
-        @fixed_monthly_expense = FixedMonthlyExpense.new
+        @budget = Budget.find(params[:budget_id])
+        @fixed_monthly_expense = FixedMonthlyExpense.new 
     end
 
     
     def create
-		@fixed_monthly_expense = FixedMonthlyExpense.new(fixed_monthly_expense_params)
-		if @fixed_monthly_expense.save
-			redirect_to fixed_monthly_expenses_path
+		@budget = Budget.find(params[:budget_id])
+        if @budget.fixed_monthly_expenses.create(fixed_monthly_expense_params)
+			redirect_to budget_fixed_monthly_expenses_path(@budget)
 		else
 			render 'new'
 		end
@@ -17,15 +17,15 @@ class FixedMonthlyExpensesController < ApplicationController
 
 	
     def edit
-		@fixed_monthly_expense = FixedMonthlyExpense.find(params[:id])
+		@budget = Budget.find(params[:budget_id])
+        @fixed_monthly_expense = @budget.fixed_monthly_expenses.find(params[:id])
 	end
     
 	
     def update
-  		@fixed_monthly_expense = FixedMonthlyExpense.find(params[:id])
- 
-		  if @fixed_monthly_expense.update(fixed_monthly_expense_params)
-    			redirect_to fixed_monthly_expenses_path
+		@budget = Budget.find(params[:budget_id])
+        if @budget.fixed_monthly_expenses.find(params[:id]).update(fixed_monthly_expense_params)
+    			redirect_to budget_fixed_monthly_expenses_path(@budget)
   		  else
     			render 'edit'
   		  end
@@ -33,15 +33,15 @@ class FixedMonthlyExpensesController < ApplicationController
     
     
     def destroy
-        @fixed_monthly_expense = FixedMonthlyExpense.find(params[:id])
-        @fixed_monthly_expense.destroy
+		@budget = Budget.find(params[:budget_id])
+        @budget.fixed_monthly_expenses.find(params[:id]).destroy
  
-        redirect_to fixed_monthly_expenses_path
+        redirect_to budget_fixed_monthly_expenses_path(@budget)
     end
 	
     
     def index
-		@fixed_monthly_expenses = FixedMonthlyExpense.all
+		@budget = Budget.find(params[:budget_id])
 	end
 	
     

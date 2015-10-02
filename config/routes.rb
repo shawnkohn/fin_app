@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resources :fixed_monthly_expenses
-  resources :step_ones  
-  resources :debts
-  resources :paychecks do
+  resources :budgets do
+      resources :paychecks, :step_ones, :debts, :fixed_monthly_expenses
+      resources :paychecks do
           resources :paycheck_deductions
+      end
   end
   # You can have the root of your site routed with "root"
   root 'welcome#index'

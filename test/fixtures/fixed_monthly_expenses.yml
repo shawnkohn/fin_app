@@ -3,7 +3,9 @@
 one:
   name: Electric
   amount: 30.25
+  budget: one
 
 two:
   name: Gym Membership
   amount: 2.4
+  budget: one

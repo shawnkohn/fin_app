@@ -6,9 +6,11 @@ one:
   balance: 1200
   minimum_monthly_payment: 12
   interest_rate: .22
+  budget: one
 
 two:
   name: Test Debt Two
   balance: 50
   minimum_monthly_payment: 10
   interest_rate: 1.35
+  budget: one

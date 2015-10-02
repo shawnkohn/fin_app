@@ -1,5 +1,5 @@
 <h1>Expenses</h1>
-<%= link_to 'New Fixed Monthly Expense', new_fixed_monthly_expense_path %>
+<%= link_to 'New Fixed Monthly Expense', new_budget_fixed_monthly_expense_path(@budget) %>
 <table id=expenses>
   <tr>
     <th>Expense Name</th>
@@ -10,7 +10,7 @@
   <%
     i=0
     table_row_style = ""
-    @fixed_monthly_expenses.each do |fixed_monthly_expense| 
+    @budget.fixed_monthly_expenses.each do |fixed_monthly_expense| 
       i += 1
       if i%2 == 0
               table_row_style = "class=alt"
@@ -21,8 +21,8 @@
     <tr <%=table_row_style%> >
       <td><%= fixed_monthly_expense.name %></td>
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money fixed_monthly_expense.amount %></div></td>
-      <td><%= link_to 'Edit', edit_fixed_monthly_expense_path(fixed_monthly_expense) %></td>
-          <td><%= link_to 'Destroy', fixed_monthly_expense_path(fixed_monthly_expense),
+      <td><%= link_to 'Edit', edit_budget_fixed_monthly_expense_path(@budget, fixed_monthly_expense) %></td>
+          <td><%= link_to 'Destroy', budget_fixed_monthly_expense_path(@budget, fixed_monthly_expense),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>

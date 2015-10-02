@@ -2,9 +2,6 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  goal_balance: 9.99
-  current_balance: 9.99
-
-two:
-  goal_balance: 9.99
-  current_balance: 9.99
+  goal_balance: 1000
+  current_balance: 111.23
+  budget: one

@@ -1,4 +1,4 @@
-<%= form_for @step_one do |f| %>
+<%= form_for [@budget, @step_one] do |f| %>
  
   <% if @step_one.errors.any? %>
     <div id="error_explanation">

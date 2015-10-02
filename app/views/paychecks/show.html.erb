@@ -17,7 +17,7 @@
     </div>
     <%= render @paycheck.paycheck_deductions %>
 </div>
+    <%= render 'paycheck_deductions/form' %>
 <br>
-<%= render 'paycheck_deductions/form' %>
 <br>
-<%= link_to 'Back', paychecks_path %>
+<%= link_to 'Back', budget_paychecks_path(@budget) %>

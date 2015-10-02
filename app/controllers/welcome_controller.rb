@@ -1,19 +1,17 @@
 class WelcomeController < ApplicationController
 
     def index
-        if (StepOne.exists?(1))
-            @step_one = StepOne.find(1)
-        else
-            @step_one = StepOne.new
-            @step_one.goal_balance = 0
-            @step_one.current_balance = 0
-            @step_one.save
-        end
+        @budget = Budget.first
 
-        if (Paycheck.exists?(1))
-            @paycheck = Paycheck.find(1)
+        if (@budget == nil)
+            redirect_to new_budget_path
         else
-            @paycheck = Paycheck.new
+            @step_one = @budget.step_one
+
+            if (@step_one == nil)
+                @step_one = @budget.create_step_one(current_balance: 0, goal_balance: 0) 
+        
+            end
         end
     end
 

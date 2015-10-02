@@ -1,4 +1,4 @@
-<%= form_for @fixed_monthly_expense do |f| %>
+<%= form_for [@budget, @fixed_monthly_expense] do |f| %>
  
   <% if @fixed_monthly_expense.errors.any? %>
     <div id="error_explanation">

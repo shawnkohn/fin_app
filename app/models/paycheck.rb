@@ -1,5 +1,7 @@
 class Paycheck < ActiveRecord::Base
-        has_many :paycheck_deductions
+
+    belongs_to :budget
+    has_many :paycheck_deductions
 
         validates :name, presence: true
         validates :amount, presence: true

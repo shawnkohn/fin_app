@@ -1,29 +1,31 @@
 class PaychecksController < ApplicationController
 
     def new    
+        @budget = Budget.find(params[:budget_id])
         @paycheck = Paycheck.new
     end
 
      
     def create
-        @paycheck = Paycheck.new(paycheck_params)
-        if @paycheck.save
-            redirect_to paychecks_path
+        @budget = Budget.find(params[:budget_id])
+        if @budget.paychecks.create(paycheck_params)
+            redirect_to budget_paychecks_path(@budget)
         else
-            renter 'new'
+            render 'new'
         end
     end
 
     
     def edit
-        @paycheck = Paycheck.find(params[:id])
+        @budget = Budget.find(params[:budget_id])
+        @paycheck = @budget.paychecks.find(params[:id])
     end  
 
     
     def update  
-        @paycheck = Paycheck.find(params[:id])
-        if @paycheck.update(paycheck_params)      
-            redirect_to paychecks_path
+        @budget = Budget.find(params[:budget_id])
+        if @budget.paychecks.find(params[:id]).update(paycheck_params)
+            redirect_to budget_paychecks_path(@budget)
         else
             render 'edit'
         end
@@ -31,20 +33,24 @@ class PaychecksController < ApplicationController
     
     
     def destroy    
-        @paycheck = Paycheck.find(params[:id])
+        @budget = Budget.find(params[:budget_id])
+        @paycheck = @budget.paychecks.find(params[:id])
+
+        @paycheck.paycheck_deductions.destroy_all
         @paycheck.destroy
  
-        redirect_to paychecks_path
+        redirect_to budget_paychecks_path(@budget)
     end      
       
  
     def index
-        @paychecks = Paycheck.all
+        @budget = Budget.find(params[:budget_id])
     end
 
     
     def show
-        @paycheck = Paycheck.find(params[:id])
+        @budget = Budget.find(params[:budget_id])
+        @paycheck = @budget.paychecks.find(params[:id])
     end
 
 

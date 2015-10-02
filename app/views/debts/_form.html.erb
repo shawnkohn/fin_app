@@ -1,4 +1,4 @@
-<%= form_for @debt do |f| %>
+<%= form_for [@budget, @debt] do |f| %>
  
   <% if @debt.errors.any? %>
     <div id="error_explanation">

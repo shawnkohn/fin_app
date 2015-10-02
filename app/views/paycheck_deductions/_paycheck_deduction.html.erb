@@ -6,7 +6,7 @@
     
     <div id=deduction_cell><%= ((paycheck_deduction.is_tax_deductible?)? "Yes" : "" ) %></div>
 
-    <div id=deduction_cell><%= link_to 'delete', [paycheck_deduction.paycheck, paycheck_deduction],
+    <div id=deduction_cell><%= link_to 'delete', [@budget, paycheck_deduction.paycheck, paycheck_deduction],
               method: :delete,
               data: { confirm: 'Are you sure?' } %></div>
 

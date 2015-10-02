@@ -1,22 +1,20 @@
 class PaycheckDeductionsController < ApplicationController
     
-    def new
-        @paycheck = Paycheck.new
-    end
-    
     def create
-        @paycheck = Paycheck.find(params[:paycheck_id])
+        @budget = Budget.find(params[:budget_id])
+        @paycheck = @budget.paychecks.find(params[:paycheck_id])
         @paycheck_deduction = @paycheck.paycheck_deductions.create(paycheck_deduction_params)
 	
-        redirect_to paycheck_path(@paycheck)
+        redirect_to budget_paycheck_path(@budget, @paycheck)
     end
 
 	
     def destroy    
-        @paycheck = Paycheck.find(params[:paycheck_id])
+        @budget = Budget.find(params[:budget_id])
+        @paycheck = @budget.paychecks.find(params[:paycheck_id])
         @paycheck_deduction = @paycheck.paycheck_deductions.find(params[:id])
         @paycheck_deduction.destroy
-        redirect_to paycheck_path(@paycheck)    
+        redirect_to budget_paycheck_path(@budget, @paycheck)    
     end
 	
 	

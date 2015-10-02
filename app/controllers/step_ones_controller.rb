@@ -1,34 +1,26 @@
 class StepOnesController < ApplicationController
 
-        def new
-                @step_one = StepOne.new
+    def update
+        @budget = Budget.find(params[:budget_id])
+        if @budget.step_one.update(step_one_params)
+            redirect_to welcome_index_path
+        else
+            render 'edit'
         end
+    end
 
-        def create
-                @step_one = StepOne.new(step_one_params)
-                if @step_one.save
-                        redirect_to @step_one
-                else
-                        render 'edit'
-                end
-        end
-
-  def update
-          @step_one = StepOne.find(params[:id])
-          if @step_one.update(step_one_params)
-                  redirect_to @step_one
-          else
-                  render 'edit'
-          end
-  end
-
-  def edit
-          @step_one = StepOne.find(params[:id])
-  end  
-
-  private
   
-  def step_one_params
-          params.require(:step_one).permit(:goal_balance, :current_balance)
-  end
+    def edit
+        @budget = Budget.find(params[:budget_id])
+        @step_one = @budget.step_one
+    end
+
+    private
+  
+  
+    def step_one_params
+        params.require(:step_one).permit(:goal_balance, :current_balance)
+    end
+
+
 end

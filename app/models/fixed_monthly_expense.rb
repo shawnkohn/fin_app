@@ -1,5 +1,8 @@
 class FixedMonthlyExpense < ActiveRecord::Base
-	validates :name, presence: true
+
+    belongs_to :budget
+
+    validates :name, presence: true
 	validates :amount, presence: true
 
   monetize :amount
