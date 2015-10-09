@@ -5,3 +5,8 @@ one:
   name: First Paycheck 
   amount: 1200
   budget: one
+
+two:
+  name: Second Paycheck
+  amount: 300
+  budget: one

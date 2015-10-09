@@ -8,4 +8,13 @@ class Paycheck < ActiveRecord::Base
 
         monetize :amount
 
+    def net_pay
+        net_pay_amt =  BigDecimal.new(self.amount.to_s)
+
+        net_pay_amt = net_pay_amt - BigDecimal.new(self.paycheck_deductions.sum(:amount).to_s)
+
+        return net_pay_amt
+    end
+
+
 end

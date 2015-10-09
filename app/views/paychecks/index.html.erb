@@ -12,7 +12,6 @@
     i=0
     table_row_style = ""
     @budget.paychecks.each do |paycheck|
-       paycheck_calculator = PaycheckCalculator.new (paycheck) 
       i += 1
       if i%2 == 0
               table_row_style = "class=alt"
@@ -23,7 +22,7 @@
     <tr <%=table_row_style%> >
       <td><%= paycheck.name %></td>
       <td><div id=currency_symbol>$</div><div id=currency_amount><%= humanized_money paycheck.amount %></div></td>
-      <td><div id=currency_symbol>$</div><div id=currency_amount><%= paycheck_calculator.net_pay %></div></td>
+      <td><div id=currency_symbol>$</div><div id=currency_amount><%= paycheck.net_pay %></div></td>
       <td><%= link_to 'Add Deductions', budget_paycheck_path(@budget, paycheck) %></td>
       <td><%= link_to 'Edit', edit_budget_paycheck_path(@budget, paycheck) %></td>
       <td><%= link_to 'Delete', budget_paycheck_path(@budget, paycheck),

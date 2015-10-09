@@ -13,3 +13,9 @@ two:
   amount: 1.20
   is_tax_deductible: false
   paycheck: one
+
+three:
+  name: MyName
+  amount: 1.50
+  is_tax_deductible: true
+  paycheck: two
