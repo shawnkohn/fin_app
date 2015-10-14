@@ -14,15 +14,22 @@
     </div>
   <% end %>
  
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
+  <span id=form_descriptions>On this page we will setup some basic information about your budget. You can choose how you would like to calculate your montly income, how you would like to account for non-monthly expenses, and how much of your regular monthly income you would like to reserve to accomplish your financial goals.</span>
+  <br>
+  <br>
+  <span id=form_labels>*<%= f.label :name %>: <%= f.text_field :name %> </span>
+  <br>
+  <br>
+  <span id=form_labels>
+      Calculate Montly Income Assuming two BiWeekly Periods? 
+      
+  </span>
+  <span id=form_descriptions>Check this box if you would like your monthly income calculated using two biweekly periods. If this box is unchecked, your income will be caluclated using a monthly average to account for the 2 extra biweekly periods annually.
 
-  <p>
-    <%= f.label :monthly_financial_goals_amount %><br>
+  
+  
+  <br><br><br><%= f.label :monthly_financial_goals_amount %><br>
     <%= f.text_field :monthly_financial_goals_amount, data: {autonumeric: true} %>
-  </p>
 
  
   <p>
