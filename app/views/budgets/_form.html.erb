@@ -18,7 +18,12 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
- 
+
+  <p>
+    <%= f.label :monthly_financial_goals_amount %><br>
+    <%= f.text_field :monthly_financial_goals_amount, data: {autonumeric: true} %>
+  </p>
+
  
   <p>
     <%= f.submit %>
