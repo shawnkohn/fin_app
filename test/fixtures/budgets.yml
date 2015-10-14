@@ -8,3 +8,5 @@
 one: 
   name: Budget One
   monthly_financial_goals_amount: 34.50
+two:
+  name: Budget Two

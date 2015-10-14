@@ -12,6 +12,7 @@ class BudgetsController < ApplicationController
                 @step_one = @budget.create_step_one(current_balance: 0, goal_balance: 0)
             end
         end
+        @budget_logic = BudgetLogic.new(@budget)
     end
 
     def new

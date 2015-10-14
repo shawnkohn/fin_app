@@ -1,29 +1,35 @@
 require "test_helper"
 
-class BudgetTest < ActiveSupport::TestCase
+class BudgetTest < ActionView::TestCase
     setup :initialize_budget
 
 
 
     test "it calculates monthly gross income" do
-        assert @budget.monthly_gross_income == BigDecimal.new("3000")
+        assert_equal(@budget.monthly_gross_income, BigDecimal.new("3000"))
     end
 
     test "it calculates total biweekly deductions" do
-        assert @budget.total_biweekly_deductions == BigDecimal.new("25.38")
+        assert_equal(@budget.total_biweekly_deductions, BigDecimal.new("25.38"))
     end
 
     test "it calculates monthly net income" do
-        assert @budget.monthly_net_income == BigDecimal.new("2974.62")
+        assert_equal(@budget.monthly_net_income, BigDecimal.new("2974.62"))
     end
 
     test "it calculates monthly fixed expenses" do
-        assert @budget.monthly_fixed_expenses == BigDecimal.new("32.65")
+        assert_equal(@budget.monthly_fixed_expenses, BigDecimal.new("32.65"))
     end
 
     test "it calculates remaining after fixed expenses" do
-        assert @budget.remaining_after_fixed_expenses == BigDecimal.new("2941.97")
+        assert_equal(@budget.remaining_after_all_expenses, BigDecimal.new("2885.47"))
     end
+
+    test "it calculates sum of minimum monthly debt payments" do
+        assert_equal(@budget.minimum_monthly_debt_payments_sum, BigDecimal.new("22"))
+    end
+
+
   private 
   def initialize_budget
       @budget = budgets(:one)

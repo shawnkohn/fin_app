@@ -5,3 +5,11 @@ one:
   goal_balance: 1000
   current_balance: 111.23
   budget: one
+two:
+  goal_balance: 900
+  current_balance: 900
+  budget: two
+three:
+  goal_balance: 900
+  current_balance: 901
+  budget: two

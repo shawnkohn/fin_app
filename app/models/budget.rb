@@ -46,11 +46,15 @@ class Budget < ActiveRecord::Base
         return monthly_expenses
     end
 
-    def remaining_after_fixed_expenses
-        remaining = self.monthly_net_income - self.monthly_fixed_expenses
+    def remaining_after_all_expenses
+        remaining = self.monthly_net_income - self.monthly_fixed_expenses - self.monthly_financial_goals_amount - self.minimum_monthly_debt_payments_sum
         return BigDecimal.new(remaining.to_s)
     end
 
+    def minimum_monthly_debt_payments_sum
+        sum = BigDecimal.new(self.debts.sum(:minimum_monthly_payment).to_s)
+        return sum
+    end
 
     private
     def default_values
