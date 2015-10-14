@@ -1,3 +1,39 @@
 // Place all the styles related to the budget controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#budget_table {
+    display: table;
+}
+
+#budget_heading{
+    display: table-row;
+    font-weight: bold;
+}
+
+#budget_heading_cell{
+    display: table-cell;
+    font-size: 1em;
+}
+
+#budget_row
+{
+    display: table-row;
+    text-indent: 20px;
+}
+
+#budget_cell
+{
+    display: table-cell;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 14px;
+}
+
+#currency_sign {
+    float: left;
+}
+
+#money_text {
+    float: right;
+}

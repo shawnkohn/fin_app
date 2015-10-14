@@ -1,8 +1,0 @@
-<h1>Budgeting and Finance Application</h1>
-
-<h3><%= link_to 'Paychecks & BiWeekly Deductions/Expenses', budget_paychecks_path(@budget) %></h3>
-<h3><%= link_to 'Fixed Monthly Expenses', budget_fixed_monthly_expenses_path(@budget) %></h3>
-<div><h3>Step 1: Initial Emergency Fund<h6><%= link_to 'Edit', edit_budget_step_one_path(@budget, @step_one) %></h6></div>
-<h5>Your Goal: $ <%= humanized_money @step_one.goal_balance %> </h5>
-<h5>Current Balance: $ <%= humanized_money @step_one.current_balance %></h5>
-<div><h3>Step 2: Payoff All Debt Excluding Mortgage<h6><%= link_to 'Edit', budget_debts_path(@budget) %></h6></div>

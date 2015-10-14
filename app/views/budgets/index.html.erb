@@ -1,0 +1,94 @@
+<div id=budget_table>
+    <div id=budget_heading>
+        <div id=budget_heading_cell>
+            Income <span id=edit_link>
+            <%= link_to 'Edit', budget_paychecks_path(@budget) %>
+            </span>
+        </div>
+    </div>
+    
+    <div id=budget_row>
+        <div id=budget_cell>
+            Gross Income
+        </div>
+        <div id=budget_cell>
+            <span id=currency_sign> $ </span>
+            <span id=money_text> <%= humanized_money @budget.monthly_gross_income %> </span>
+        </div>
+    </div>
+    <div id=budget_row>
+        <div id=budget_cell>
+            Less Total BiWeekly Deductions/Expenses
+        </div>
+        <div id=budget_cell>
+            <span id=currency_sign> $ </span>
+            <span id=money_text>-<%= humanized_money @budget.total_biweekly_deductions %> </span>
+        </div>
+    </div>
+    <div id=budget_row>
+        <div id=budget_cell>
+            Monthly Net Income
+        </div>
+        <div id=budget_cell>
+            <span id=currency_sign> $ </span>
+            <span id=money_text><%= humanized_money @budget.monthly_net_income %> </span>
+        </div>
+    </div>
+    <div id=budget_heading>
+        <div id=budget_heading_cell>
+            Fixed Monthly Expenses <span id=edit_link>
+            <%= link_to 'Edit', budget_fixed_monthly_expenses_path(@budget)   %>
+            </span>
+        </div>
+    </div>
+    
+    <div id=budget_row>
+        <div id=budget_cell>
+            Less Fixed Monthly Expenses
+        </div>
+        <div id=budget_cell>
+            <span id=currency_sign>$</span>
+            <span id=money_text> -<%= @budget.monthly_fixed_expenses %> </span>
+        </div>
+    </div>
+    
+    <div id=budget_heading><br><br></div>
+    
+    <div id=budget_heading>
+        <div id=budget_heading_cell>
+             Step 1: Initial Emergency Fund<span id=edit_link>
+            <%= link_to 'Edit', edit_budget_step_one_path(@budget, @step_one) %>
+            </span>
+        </div>
+    </div>
+    
+    <div id=budget_row>
+        <div id=budget_cell>
+            Your Goal
+        </div>
+        <div id=budget_cell>
+            <span id=currency_sign>$</span>
+            <span id=money_text> <%= humanized_money @step_one.goal_balance %> </span>
+        </div>
+    </div>
+    
+    <div id=budget_row>
+        <div id=budget_cell>
+            Current Balance
+        </div>
+        <div id=budget_cell>
+            <span id=currency_sign>$</span>
+            <span id=money_text> <%= humanized_money @step_one.current_balance %> </span>
+        </div>
+    </div>
+    
+    <div id=budget_heading><br><br></div>
+    
+    <div id=budget_heading>
+        <div id=budget_heading_cell>
+             Step 2: Payoff All Debt Excluding Mortgage<span id=edit_link>
+            <%= link_to 'Edit', budget_debts_path(@budget) %>
+            </span>
+        </div>
+    </div>
+</div>

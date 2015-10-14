@@ -12,7 +12,7 @@ class StepOnesControllerTest < ActionController::TestCase
     test "should update step_one" do
         @step_one.goal_balance=234
         patch :update, budget_id: @budget, id: @step_one, step_one: {current_balance: @step_one.current_balance, goal_balance: @step_one.goal_balance}
-        assert_redirected_to welcome_index_path
+        assert_redirected_to budgets_index_path
     end
 
     private

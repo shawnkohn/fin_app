@@ -18,3 +18,10 @@ body {
         font-family: 'Montserrat', serif;
         font-size: 18px;
       }
+
+#edit_link {
+    font-size: 12px;
+    padding-left: 4px;
+    padding-right: 4px;
+    vertical-align: middle;
+}    

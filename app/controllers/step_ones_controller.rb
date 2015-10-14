@@ -3,7 +3,7 @@ class StepOnesController < ApplicationController
     def update
         @budget = Budget.find(params[:budget_id])
         if @budget.step_one.update(step_one_params)
-            redirect_to welcome_index_path
+            redirect_to budgets_index_path
         else
             render 'edit'
         end
