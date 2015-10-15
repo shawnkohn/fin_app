@@ -10,3 +10,7 @@ two:
   name: Second Paycheck
   amount: 300
   budget: one
+three:
+  name: Third Paycheck Average
+  amount: 500
+  budget: two

@@ -8,5 +8,7 @@
 one: 
   name: Budget One
   monthly_financial_goals_amount: 34.50
+  calculate_income_using_two_biweekly_periods: true
 two:
   name: Budget Two
+  calculate_income_using_two_biweekly_periods: false

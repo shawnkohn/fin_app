@@ -12,31 +12,25 @@ class Budget < ActiveRecord::Base
 
     before_save :default_values
 
-    def monthly_gross_income
-        monthly_gross = self.paychecks.sum(:amount)
-        monthly_gross = monthly_gross *2
+    def total_monthly_gross_income
+        biweekly_gross = self.paychecks.sum(:amount)
+        monthly_gross = calculate_monthly(biweekly_gross)
         return BigDecimal.new(monthly_gross.to_s)
     end
 
 
-    def total_biweekly_deductions
-        monthly_deductions = BigDecimal.new("0")
+    def total_monthly_deductions
+        biweekly_deductions = 0.0 
         self.paychecks.each do |paycheck|
-            monthly_deductions += paycheck.paycheck_deductions.sum(:amount)
+            biweekly_deductions += paycheck.paycheck_deductions.sum(:amount)
         end
 
-        monthly_deductions = monthly_deductions * 2
+        monthly_deductions = calculate_monthly(biweekly_deductions)
         return BigDecimal.new(monthly_deductions.to_s)
     end
 
     def monthly_net_income
-        monthly_deductions = BigDecimal.new("0")
-        self.paychecks.each do |paycheck|
-            monthly_deductions += paycheck.paycheck_deductions.sum(:amount)
-        end
-
-        monthly_deductions = monthly_deductions * 2
-        monthly_net = self.monthly_gross_income - monthly_deductions
+        monthly_net = self.total_monthly_gross_income - self.total_monthly_deductions
 
         return BigDecimal.new(monthly_net.to_s)
     end
@@ -61,4 +55,12 @@ class Budget < ActiveRecord::Base
         self.monthly_financial_goals_amount ||= 0
     end
 
+    def calculate_monthly(biweekly_amount)
+        if self.calculate_income_using_two_biweekly_periods
+            return biweekly_amount * 2
+        else
+            return ((biweekly_amount*26)/12).round(2)
+        end
+    end
+    
 end

@@ -19,3 +19,8 @@ three:
   amount: 1.50
   is_tax_deductible: true
   paycheck: two
+four:
+  name: Paycheck Deduction Four
+  amount: 1.50
+  is_tax_deductible: false
+  paycheck: three
