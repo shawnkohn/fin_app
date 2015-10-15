@@ -10,7 +10,6 @@ class Budget < ActiveRecord::Base
 
     monetize :monthly_financial_goals_amount
 
-    before_save :default_values
 
     def total_monthly_gross_income
         biweekly_gross = self.paychecks.sum(:amount)
@@ -51,10 +50,6 @@ class Budget < ActiveRecord::Base
     end
 
     private
-    def default_values
-        self.monthly_financial_goals_amount ||= 0
-    end
-
     def calculate_monthly(biweekly_amount)
         if self.calculate_income_using_two_biweekly_periods
             return biweekly_amount * 2

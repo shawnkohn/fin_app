@@ -44,7 +44,12 @@ class PaychecksControllerTest < ActionController::TestCase
         assert_redirected_to budget_paychecks_path(assigns(:budget))
         
     end
-    
+
+    test "should show paycheck" do
+        get :show, budget_id: @budget, id: @paycheck
+        assert_response :success
+    end 
+
     private
     def initialize_paycheck
         @budget = budgets(:one)
