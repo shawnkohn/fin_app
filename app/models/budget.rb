@@ -40,13 +40,28 @@ class Budget < ActiveRecord::Base
     end
 
     def remaining_after_all_expenses
-        remaining = self.monthly_net_income - self.monthly_fixed_expenses - self.monthly_financial_goals_amount - self.minimum_monthly_debt_payments_sum
+        remaining = self.monthly_net_income - self.monthly_fixed_expenses - self.monthly_financial_goals_amount - self.minimum_monthly_debt_payments_sum - self.non_monthly_expense_amount
         return BigDecimal.new(remaining.to_s)
     end
 
     def minimum_monthly_debt_payments_sum
         sum = BigDecimal.new(self.debts.sum(:minimum_monthly_payment).to_s)
         return sum
+    end
+
+    def total_non_monthly_expenses
+        non_monthly = 0.0;
+        non_monthly += self.non_monthly_expense_amount
+
+        if self.use_biweekly_extra_for_non_monthly_expenses
+            self.paychecks.each do |paycheck|
+                non_monthly += paycheck.net_pay
+            end
+        end
+
+        non_monthly *= 2
+
+        return BigDecimal.new(non_monthly.to_s)
     end
 
     private

@@ -44,6 +44,12 @@ class BudgetTest < ActionView::TestCase
         assert_equal(@budget.total_monthly_deductions, BigDecimal.new("3.25"))
     end
 
+    test "it calculates non monthly expenses using biweekly extra" do
+        @budget = initialize_budget(:one)
+        assert_equal(@budget.total_non_monthly_expenses, BigDecimal("2974.62"))
+    end
+
+
   private 
   def initialize_budget(budget_id)
       @budget = budgets(budget_id)

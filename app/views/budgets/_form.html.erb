@@ -1,35 +1,76 @@
 <%= form_for @budget do |f| %>
- 
-  <% if @budget.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@budget.errors.count, "error") %> prohibited
-        this budget from being saved:
-      </h2>
-      <ul>
-        <% @budget.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
-  <span id=form_descriptions>On this page we will setup some basic information about your budget. You can choose how you would like to calculate your montly income, how you would like to account for non-monthly expenses, and how much of your regular monthly income you would like to reserve to accomplish your financial goals.</span>
-  <br>
-  <br>
-  <span id=form_labels>*<%= f.label :name %>: <%= f.text_field :name %> </span>
-  <br>
-  <br>
-  <span id=form_labels>
-      Calculate Montly Income Assuming two BiWeekly Periods?
-      <%= f.check_box :calculate_income_using_two_biweekly_periods %>      
-  </span>
-  <span id=form_descriptions>Check this box if you would like your monthly income calculated using two biweekly periods. If this box is unchecked, your income will be caluclated using a monthly average to account for the 2 extra biweekly periods annually.
+    
+    <% if @budget.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:
+            </h2>
+            <ul>
+                <% @budget.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
-  
-  
-  <br><br><br><%= f.label :monthly_financial_goals_amount %><br>
-    <%= f.text_field :monthly_financial_goals_amount, data: {autonumeric: true} %>
+    <span id=form_descriptions>On this page we will setup some basic information about your budget. You can choose how you would like to calculate your montly income, how you would like to account for non-monthly expenses, and how much of your regular monthly income you would like to reserve to accomplish your financial goals.</span>
+    <br>
+    <br>
+    <span id=form_labels>
+        *Budget Name: <%= f.text_field :name %> 
+    </span>
+    
+    <br>
+    <br>
+    <br>
+    <span id=budget_page_heading>
+        Monthly Financial Goals
+    </span>
+    <br>
+    <span id=form_descriptions>
+        This is the amount of your income that will be dedicated to accomplishing your financial goals each month. This amount is the first to come out of your net pay and is used to accomplish your goals including Funding an Emergency Account, Becommming Debt Free, Investing, etc.
+    </span>
+    <br>
+    <span id=form_labels>
+        Amount:
+        <%= f.text_field :monthly_financial_goals_amount, data: {autonumeric: true} %>
+    </span>
+    
+    <br>
+    <br>
+    <br>
+    <span id=budget_page_heading>
+        Calculating Monthly Income with BiWeekly Pay    
+    </span>
+    <br>
+    <span id=form_descriptions>
+        Select this option if you would like your monthly income calculated using two biweekly periods. If this box is unchecked, your income will be caluclated using a monthly average to account for the two extra biweekly periods annually.
+    </span>
+    <br>
+    <span id=form_labels>
+        Calculate Using BiWeekly Periods?
+        <%= f.check_box :calculate_income_using_two_biweekly_periods %>      
+    </span>
+
+
+
+    <br>
+    <br>
+    <br>
+    <span id=budget_page_heading>
+        Non Monthly Expenses    
+    </span>
+    <br>
+    <span id=form_descriptions>
+        This is the amount of your income that will be dedicated to your non monthly expenses including gifts, annual premiums, annual auto registration, home maintenance, quarterly taxes, etc.
+    </span>
+    <br>
+
+    <span id=form_labels>
+        Calculate Using BiWeekly Periods?
+        <%= f.text_field :non_monthly_expense_amount, data: {autonumeric: true}  %>
+    </span>
+     
 
  
   <p>

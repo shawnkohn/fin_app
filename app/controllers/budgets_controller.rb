@@ -45,7 +45,7 @@ class BudgetsController < ApplicationController
     private
 
     def budget_params
-        params.require(:budget).permit(:name, :monthly_financial_goals_amount, :calculate_income_using_two_biweekly_periods)
+        params.require(:budget).permit(:name, :monthly_financial_goals_amount, :calculate_income_using_two_biweekly_periods, :non_monthly_expense_amount, :use_biweekly_extra_for_non_monthly_expenses)
     end 
 
 end

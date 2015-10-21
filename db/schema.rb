@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014222917) do
+ActiveRecord::Schema.define(version: 20151015140956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20151014222917) do
     t.string   "name"
     t.decimal  "monthly_financial_goals_amount",              precision: 12, scale: 2, default: 0.0
     t.boolean  "calculate_income_using_two_biweekly_periods"
+    t.decimal  "non_monthly_expense_amount",                  precision: 12, scale: 2, default: 0.0
+    t.boolean  "use_biweekly_extra_for_non_monthly_expenses"
   end
 
   create_table "debts", force: :cascade do |t|

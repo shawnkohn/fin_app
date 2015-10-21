@@ -39,12 +39,17 @@
     float: right;
 }
 
+#budget_page_heading{
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
 #form_labels {
-    font-size: 1em;
+    font-size: .85em;
     font-weight: bold;
 }
 
 #form_descriptions {
-    font-size: .75em;
-    text-indent: 30px;
+    font-size: .65em;
+    line-height: .5;
 }

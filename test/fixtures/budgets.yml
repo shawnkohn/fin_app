@@ -9,6 +9,10 @@ one:
   name: Budget One
   monthly_financial_goals_amount: 34.50
   calculate_income_using_two_biweekly_periods: true
+  use_biweekly_extra_for_non_monthly_expenses: true
 two:
   name: Budget Two
+  monthly_financial_goals_amount: 2.5
   calculate_income_using_two_biweekly_periods: false
+  non_monthly_expense_amount: 45.00
+  use_biweekly_extra_for_non_monthly_expenses: false
